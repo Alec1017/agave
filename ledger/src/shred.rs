@@ -84,13 +84,13 @@ use {
 use {solana_keypair::Keypair, solana_perf::packet::Packet, solana_signer::Signer};
 
 mod common;
-pub(crate) mod merkle;
-mod merkle_tree;
+pub mod merkle;
+pub mod merkle_tree;
 mod payload;
 mod shred_code;
 mod shred_data;
 mod stats;
-mod traits;
+pub mod traits;
 pub mod wire;
 
 // Alias for shred::wire::* for the old code.
@@ -108,7 +108,7 @@ pub const SIZE_OF_NONCE: usize = std::mem::size_of::<Nonce>();
 const SIZE_OF_COMMON_SHRED_HEADER: usize = 83;
 pub const SIZE_OF_DATA_SHRED_HEADERS: usize = 88;
 const SIZE_OF_CODING_SHRED_HEADERS: usize = 89;
-const SIZE_OF_SIGNATURE: usize = SIGNATURE_BYTES;
+pub const SIZE_OF_SIGNATURE: usize = SIGNATURE_BYTES;
 
 // Shreds are uniformly split into erasure batches with a "target" number of
 // data shreds per each batch as below. The actual number of data shreds in
@@ -221,7 +221,7 @@ pub enum ShredType {
 
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Deserialize, Serialize)]
 #[serde(into = "u8", try_from = "u8")]
-enum ShredVariant {
+pub enum ShredVariant {
     // proof_size is the number of Merkle proof entries, and is encoded in the
     // lowest 4 bits of the binary representation. The first 4 bits identify
     // the shred variant:
