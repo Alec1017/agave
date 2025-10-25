@@ -238,7 +238,7 @@ pub enum ShredVariant {
 pub struct ShredCommonHeader {
     signature: Signature,
     pub shred_variant: ShredVariant,
-    slot: Slot,
+    pub slot: Slot,
     pub index: u32,
     version: u16,
     fec_set_index: u32,
