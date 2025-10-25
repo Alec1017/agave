@@ -235,7 +235,7 @@ pub enum ShredVariant {
 
 /// A common header that is present in data and code shred headers
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Deserialize, Serialize)]
-struct ShredCommonHeader {
+pub struct ShredCommonHeader {
     signature: Signature,
     pub shred_variant: ShredVariant,
     slot: Slot,
@@ -246,7 +246,7 @@ struct ShredCommonHeader {
 
 /// The data shred header has parent offset and flags
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Deserialize, Serialize)]
-struct DataShredHeader {
+pub struct DataShredHeader {
     parent_offset: u16,
     flags: ShredFlags,
     size: u16, // common shred header + data shred header + data
@@ -254,7 +254,7 @@ struct DataShredHeader {
 
 /// The coding shred header has FEC information
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Deserialize, Serialize)]
-struct CodingShredHeader {
+pub struct CodingShredHeader {
     num_data_shreds: u16,
     num_coding_shreds: u16,
     position: u16, // [0..num_coding_shreds)
