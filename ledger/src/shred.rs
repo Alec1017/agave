@@ -237,9 +237,9 @@ pub enum ShredVariant {
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Deserialize, Serialize)]
 struct ShredCommonHeader {
     signature: Signature,
-    shred_variant: ShredVariant,
+    pub shred_variant: ShredVariant,
     slot: Slot,
-    index: u32,
+    pub index: u32,
     version: u16,
     fec_set_index: u32,
 }
