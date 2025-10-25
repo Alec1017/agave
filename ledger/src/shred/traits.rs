@@ -6,6 +6,7 @@ use {
     solana_signature::Signature,
 };
 
+// made it public
 pub trait Shred<'a>: Sized {
     // Total size of payload including headers, merkle
     // branches (if any), zero paddings, etc.
